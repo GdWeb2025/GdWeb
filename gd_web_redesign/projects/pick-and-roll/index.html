@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pick&Roll — Sneakers & Streetwear, Faenza</title>
+<meta name="description" content="Pick&Roll è lo sneaker store di Faenza specializzato in sneakers esclusive, streetwear, legit check e resell. Release limitate, cultura vera.">
+
+<!-- SEO / Open Graph -->
+<meta property="og:title" content="Pick&Roll — Sneakers & Streetwear a Faenza">
+<meta property="og:description" content="Il punto di riferimento per sneakers e streetwear a Faenza. Autenticità garantita, release esclusive, community vera.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta name="robots" content="index, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@500,600,700,800&display=swap">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportingGoodsStore",
+  "name": "Pick&Roll",
+  "image": "",
+  "description": "Sneaker store specializzato in sneakers esclusive, streetwear, legit check e resell a Faenza.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Faenza",
+    "addressRegion": "Emilia-Romagna",
+    "addressCountry": "IT"
+  },
+  "areaServed": ["Faenza", "Ravenna", "Emilia-Romagna"]
+}
+</script>
+
+<style>
+  :root{
+    --ink:#0a0a0a;
+    --ink-soft:#121211;
+    --concrete:#3a3a38;
+    --bone:#f3f1ec;
+    --bone-dim:#cfccc4;
+    --court-red:#d62828;
+    --volt:#c6ff3d;
+    --satin:#b6b8bb;
+    --border:rgba(243,241,236,0.1);
+    --ease:cubic-bezier(.16,1,.3,1);
+    --display:"General Sans", "Inter", sans-serif;
+    --body:"Inter", sans-serif;
+    --mono:"IBM Plex Mono", monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:var(--body);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  ::selection{background:var(--court-red);color:var(--bone);}
+
+  .wrap{max-width:1320px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--volt);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:6px;height:6px;background:var(--volt);border-radius:50%;flex-shrink:0;}
+
+  h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-0.02em;line-height:0.98;}
+
+  .btn{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:18px 30px;
+    border-radius:999px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    cursor:pointer;
+    border:1px solid var(--border);
+    transition:background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--bone);color:var(--ink);border-color:var(--bone);}
+  .btn-primary:hover{background:var(--court-red);color:var(--bone);border-color:var(--court-red);}
+  .btn-ghost{color:var(--bone);}
+  .btn-ghost:hover{border-color:var(--bone);}
+  .magnetic{position:relative;}
+
+  /* reveal */
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease), transform .9s var(--ease);}
+  .rv.in{opacity:1;transform:translateY(0);}
+  .rv-stagger > *{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease), transform .7s var(--ease);}
+  .rv-stagger.in > *{opacity:1;transform:translateY(0);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 0;
+    transition:background .5s var(--ease), padding .5s var(--ease), border-color .5s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    background:rgba(10,10,10,.78);
+    backdrop-filter:blur(14px);
+    padding:14px 0;
+    border-color:var(--border);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-0.02em;}
+  .logo span{color:var(--court-red);}
+  .nav-links{display:flex;gap:36px;font-size:14px;color:var(--bone-dim);}
+  .nav-links a{position:relative;padding:4px 0;transition:color .3s;}
+  .nav-links a::after{content:"";position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--volt);transition:width .35s var(--ease);}
+  .nav-links a:hover{color:var(--bone);}
+  .nav-links a:hover::after{width:100%;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:2px;background:var(--bone);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    padding-top:120px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(214,40,40,.16), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, var(--ink-soft) 100%);
+  }
+  .court-arc{
+    position:absolute;
+    top:-10%;left:50%;
+    width:1400px;height:1400px;
+    transform:translateX(-50%);
+    border:1px solid rgba(243,241,236,.07);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .court-arc.arc2{width:1000px;height:1000px;border-color:rgba(198,255,61,.08);}
+  .hero-grid{position:relative;z-index:2;}
+  .hero-eyebrow{margin-bottom:28px;}
+  .word{
+    font-size:clamp(64px, 14vw, 188px);
+    text-transform:uppercase;
+    display:flex;
+    align-items:baseline;
+    gap:.02em;
+    flex-wrap:wrap;
+  }
+  .word .amp{
+    color:var(--court-red);
+    display:inline-block;
+    transform-origin:50% 60%;
+  }
+  .word .roll{display:inline-flex;}
+  .word .roll span{display:inline-block;}
+  .hero-sub{
+    margin-top:30px;
+    max-width:520px;
+    font-size:17px;
+    color:var(--bone-dim);
+    line-height:1.55;
+  }
+  .hero-cta{margin-top:46px;display:flex;gap:16px;flex-wrap:wrap;}
+  .scroll-hint{
+    position:absolute;bottom:36px;left:32px;
+    display:flex;align-items:center;gap:12px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.15em;color:var(--bone-dim);
+    text-transform:uppercase;
+  }
+  .scroll-line{width:1px;height:36px;background:linear-gradient(var(--bone-dim), transparent);position:relative;overflow:hidden;}
+  .scroll-line::after{content:"";position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--volt);animation:scrolldrip 2.2s ease-in-out infinite;}
+  @keyframes scrolldrip{0%{top:-100%;}100%{top:100%;}}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-strip{
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    background:var(--ink-soft);
+    overflow:hidden;
+    padding:18px 0;
+  }
+  .marquee-track{display:flex;width:max-content;animation:scrollx 32s linear infinite;}
+  .marquee-track span{
+    font-family:var(--mono);font-size:13px;letter-spacing:.12em;
+    color:var(--bone-dim);padding:0 28px;text-transform:uppercase;
+    display:flex;align-items:center;gap:28px;
+  }
+  .marquee-track span::after{content:"●";color:var(--court-red);font-size:6px;}
+  @keyframes scrollx{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- STORY ---------- */
+  .section{padding:160px 0;position:relative;}
+  .story{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+  .story h2{font-size:clamp(38px,5vw,64px);margin-bottom:28px;}
+  .story p{color:var(--bone-dim);font-size:17px;line-height:1.7;max-width:460px;}
+  .story-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;}
+  .stat-num{font-family:var(--display);font-weight:700;font-size:36px;color:var(--volt);}
+  .stat-label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--bone-dim);text-transform:uppercase;margin-top:6px;}
+  .story-visual{
+    aspect-ratio:4/5;
+    border-radius:18px;
+    position:relative;
+    background:linear-gradient(155deg, var(--concrete), var(--ink-soft));
+    overflow:hidden;
+    border:1px solid var(--border);
+  }
+  .story-visual .grain-line{
+    position:absolute;inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(243,241,236,.05) 0px, rgba(243,241,236,.05) 1px, transparent 1px, transparent 18px);
+  }
+  .story-visual .tag-float{
+    position:absolute;bottom:24px;left:24px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    background:var(--ink);border:1px solid var(--border);padding:10px 16px;border-radius:999px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .story-visual .tag-float::before{content:"";width:6px;height:6px;background:var(--volt);border-radius:50%;}
+
+  /* ---------- FEATURES ---------- */
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+  .feature{background:var(--ink);padding:48px 40px;transition:background .5s var(--ease);}
+  .feature:hover{background:var(--ink-soft);}
+  .feature .ic{width:42px;height:42px;margin-bottom:28px;color:var(--volt);}
+  .feature h3{font-size:24px;margin-bottom:14px;}
+  .feature p{color:var(--bone-dim);font-size:15px;line-height:1.6;}
+
+  /* ---------- PRODUCTS ---------- */
+  .section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:24px;flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(34px,4.5vw,52px);}
+  .products-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;}
+  .product-card{
+    border-radius:16px;overflow:hidden;
+    border:1px solid var(--border);
+    background:var(--ink-soft);
+    cursor:pointer;
+    transition:transform .15s ease, border-color .4s var(--ease);
+    will-change:transform;
+  }
+  .product-card:hover{border-color:rgba(243,241,236,.25);}
+  .swatch{
+    aspect-ratio:1/1.05;
+    position:relative;
+    display:flex;align-items:flex-start;justify-content:space-between;
+    padding:16px;
+  }
+  .swatch .tag{
+    font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    background:rgba(10,10,10,.55);padding:5px 10px;border-radius:999px;backdrop-filter:blur(4px);
+  }
+  .swatch .dot{width:10px;height:10px;border-radius:50%;background:var(--bone);opacity:.85;}
+  .product-info{padding:16px 18px 20px;border-top:1px solid var(--border);}
+  .product-info .name{font-family:var(--display);font-weight:600;font-size:15px;margin-bottom:4px;}
+  .product-info .meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--bone-dim);}
+
+  .sw-1{background:linear-gradient(135deg,#7a1f1f,#2c0d0d);}
+  .sw-2{background:linear-gradient(135deg,#1f2a1f,#0d150d);}
+  .sw-3{background:linear-gradient(135deg,#cfccc4,#7d7a73);}
+  .sw-4{background:linear-gradient(135deg,#2a2a36,#0d0d14);}
+  .sw-5{background:linear-gradient(135deg,#6a4423,#241608);}
+
+  /* ---------- STREETWEAR MAGAZINE ---------- */
+  .mag{display:grid;grid-template-columns:1.2fr .8fr;gap:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+  .mag-left{background:var(--court-red);padding:64px 56px;display:flex;flex-direction:column;justify-content:space-between;min-height:520px;}
+  .mag-left h2{font-size:clamp(40px,6vw,72px);color:var(--ink);}
+  .mag-left .eyebrow{color:var(--ink);}
+  .mag-left .eyebrow::before{background:var(--ink);}
+  .mag-right{background:var(--ink-soft);display:grid;grid-template-rows:1fr 1fr;}
+  .mag-tile{padding:32px;border-top:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-end;position:relative;}
+  .mag-tile:first-child{border-top:none;}
+  .mag-tile .mag-name{font-family:var(--display);font-weight:700;font-size:22px;}
+  .mag-tile .mag-tag{font-family:var(--mono);font-size:11px;color:var(--bone-dim);text-transform:uppercase;margin-top:4px;}
+  .mag-tile.t1{background:linear-gradient(155deg,#2a2a36,#101016);}
+  .mag-tile.t2{background:linear-gradient(155deg,#3a3a38,#16160f);}
+
+  /* ---------- INSTAGRAM ---------- */
+  .ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+  .ig-tile{aspect-ratio:1/1;border-radius:12px;position:relative;overflow:hidden;cursor:pointer;}
+  .ig-tile .ig-overlay{
+    position:absolute;inset:0;background:rgba(10,10,10,.55);
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    opacity:0;transition:opacity .35s var(--ease);
+    font-family:var(--mono);font-size:13px;
+  }
+  .ig-tile:hover .ig-overlay{opacity:1;}
+  .ig-1{background:linear-gradient(160deg,#7a1f1f,#1a0707);}
+  .ig-2{background:linear-gradient(160deg,#3a3a38,#0c0c0b);}
+  .ig-3{background:linear-gradient(160deg,#1f2a1f,#070d07);}
+  .ig-4{background:linear-gradient(160deg,#6a4423,#1a1006);}
+  .ig-5{background:linear-gradient(160deg,#2a2a36,#08080c);}
+  .ig-6{background:linear-gradient(160deg,#cfccc4,#56544e);}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .ticker-wrap{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:64px 0;overflow:hidden;}
+  .ticker{display:flex;width:max-content;animation:scrollx 50s linear infinite;gap:24px;}
+  .quote-card{
+    width:420px;flex-shrink:0;
+    background:var(--ink-soft);border:1px solid var(--border);border-radius:16px;
+    padding:32px;
+  }
+  .quote-card p{font-size:16px;line-height:1.6;color:var(--bone);margin-bottom:18px;}
+  .quote-card .who{font-family:var(--mono);font-size:12px;color:var(--bone-dim);text-transform:uppercase;letter-spacing:.06em;}
+  .stars{color:var(--volt);font-size:13px;margin-bottom:14px;letter-spacing:2px;}
+
+  /* ---------- STORE ---------- */
+  .store{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-radius:18px;overflow:hidden;}
+  .store-info{padding:64px 56px;background:var(--ink-soft);}
+  .store-info h2{font-size:clamp(32px,4vw,46px);margin-bottom:30px;}
+  .store-row{display:flex;justify-content:space-between;padding:18px 0;border-top:1px solid var(--border);font-size:15px;}
+  .store-row:first-of-type{border-top:none;}
+  .store-row .label{color:var(--bone-dim);font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.08em;}
+  .store-map{
+    position:relative;background:
+      radial-gradient(circle at 30% 40%, rgba(214,40,40,.25), transparent 50%),
+      repeating-linear-gradient(0deg, rgba(243,241,236,.04) 0 1px, transparent 1px 48px),
+      repeating-linear-gradient(90deg, rgba(243,241,236,.04) 0 1px, transparent 1px 48px),
+      var(--ink);
+    min-height:480px;display:flex;align-items:center;justify-content:center;
+  }
+  .pin{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .pin-dot{width:18px;height:18px;border-radius:50%;background:var(--court-red);box-shadow:0 0 0 8px rgba(214,40,40,.18);animation:pulse 2.4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 8px rgba(214,40,40,.18);}50%{box-shadow:0 0 0 16px rgba(214,40,40,.06);}}
+  .pin-label{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-dim);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:90px 0 40px;border-top:1px solid var(--border);}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;margin-bottom:80px;}
+  .foot-logo{font-family:var(--display);font-weight:800;font-size:30px;margin-bottom:18px;}
+  .foot-logo span{color:var(--court-red);}
+  .foot-top p{color:var(--bone-dim);font-size:14px;max-width:280px;line-height:1.6;}
+  .foot-col h4{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-dim);margin-bottom:18px;}
+  .foot-col a{display:block;font-size:14px;margin-bottom:12px;color:var(--bone-dim);transition:color .3s;}
+  .foot-col a:hover{color:var(--bone);}
+  .foot-bottom{display:flex;justify-content:space-between;padding-top:32px;border-top:1px solid var(--border);font-family:var(--mono);font-size:11px;color:var(--bone-dim);letter-spacing:.05em;flex-wrap:wrap;gap:12px;}
+
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .story,.mag,.store{grid-template-columns:1fr;}
+    .products-grid{grid-template-columns:repeat(2,1fr);}
+    .features{grid-template-columns:1fr;}
+    .ig-grid{grid-template-columns:repeat(3,1fr);}
+    .foot-top{grid-template-columns:1fr 1fr;}
+    .section{padding:100px 0;}
+    .mag-right{grid-template-rows:240px 240px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation-duration:.001s !important; transition-duration:.001s !important;}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap">
+    <nav>
+      <a class="logo" href="#">PICK<span>&</span>ROLL</a>
+      <div class="nav-links">
+        <a href="#sneakers">Sneakers</a>
+        <a href="#streetwear">Streetwear</a>
+        <a href="#release">Nuove Release</a>
+        <a href="#store">Store</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+      <a class="btn btn-ghost magnetic" href="#store" style="display:none" id="navCta">Prenota legit check</a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="court-arc"></div>
+  <div class="court-arc arc2"></div>
+  <div class="wrap hero-grid">
+    <div class="eyebrow hero-eyebrow">Faenza · Est. sneaker culture</div>
+    <h1 class="word">
+      <span>PICK</span><span class="amp" id="amp">&amp;</span><span class="roll" id="rollWord"></span>
+    </h1>
+    <p class="hero-sub">Il punto di riferimento per sneakers e streetwear a Faenza. Release esclusive, legit check professionale, community vera.</p>
+    <div class="hero-cta">
+      <a href="#release" class="btn btn-primary magnetic">Scopri le ultime release</a>
+      <a href="#store" class="btn btn-ghost magnetic">Visita lo store</a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marquee1"></div>
+</div>
+
+<!-- STORY -->
+<section class="section">
+  <div class="wrap story">
+    <div class="rv">
+      <div class="eyebrow">La nostra storia</div>
+      <h2>Non vendiamo<br>solo sneakers.</h2>
+      <p>Costruiamo connessioni tra persone, cultura e prodotti che hanno una storia. Ogni paio che entra in negozio passa dalle nostre mani prima di arrivare alle vostre — controllato, raccontato, scelto.</p>
+      <div class="story-stats">
+        <div><div class="stat-num">2017</div><div class="stat-label">Da quando</div></div>
+        <div><div class="stat-num">4000+</div><div class="stat-label">Paia autenticate</div></div>
+        <div><div class="stat-num">100%</div><div class="stat-label">Legit check</div></div>
+      </div>
+    </div>
+    <div class="rv story-visual">
+      <div class="grain-line"></div>
+      <div class="tag-float">Faenza, dal 2017</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="features rv-stagger">
+      <div class="feature">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        <h3>Autenticità garantita</h3>
+        <p>Ogni paio passa da un legit check professionale prima di arrivare in vendita. Nessun compromesso su questo punto.</p>
+      </div>
+      <div class="feature">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 17l6-6-4-4 8-4 6 6-4 8-4-4-6 6-2-2z"/></svg>
+        <h3>Release esclusive</h3>
+        <p>Modelli difficili da reperire, drop limitati e accesso prioritario per chi fa parte della community.</p>
+      </div>
+      <div class="feature">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19c0-3 2.5-5 6-5s6 2 6 5"/><path d="M14.5 14.2c2.7.2 4.5 2 4.5 4.8"/></svg>
+        <h3>Community</h3>
+        <p>Un luogo fisico per chi vive davvero la sneaker culture, non solo un punto vendita.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="sneakers">
+  <div class="wrap">
+    <div class="section-head rv">
+      <h2>In evidenza<br>questa settimana.</h2>
+      <a href="#release" class="btn btn-ghost magnetic">Vedi tutte le release</a>
+    </div>
+    <div class="products-grid rv-stagger">
+      <div class="product-card">
+        <div class="swatch sw-1"><span class="tag">Deadstock</span><span class="dot"></span></div>
+        <div class="product-info"><div class="name">Air Jordan 4</div><div class="meta"><span>Bred Reimagined</span><span>€289</span></div></div>
+      </div>
+      <div class="product-card">
+        <div class="swatch sw-2"><span class="tag">Limited</span><span class="dot"></span></div>
+        <div class="product-info"><div class="name">Jordan 1 High</div><div class="meta"><span>Panda</span><span>€199</span></div></div>
+      </div>
+      <div class="product-card">
+        <div class="swatch sw-3"><span class="tag">Retail</span><span class="dot"></span></div>
+        <div class="product-info"><div class="name">Nike Dunk Low</div><div class="meta"><span>Grey Fog</span><span>€119</span></div></div>
+      </div>
+      <div class="product-card">
+        <div class="swatch sw-4"><span class="tag">Resell</span><span class="dot"></span></div>
+        <div class="product-info"><div class="name">NB 9060</div><div class="meta"><span>Sea Salt</span><span>€159</span></div></div>
+      </div>
+      <div class="product-card">
+        <div class="swatch sw-5"><span class="tag">Retail</span><span class="dot"></span></div>
+        <div class="product-info"><div class="name">Adidas Samba</div><div class="meta"><span>OG Brown</span><span>€129</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STREETWEAR MAGAZINE -->
+<section class="section" id="streetwear">
+  <div class="wrap">
+    <div class="mag rv">
+      <div class="mag-left">
+        <div class="eyebrow">Streetwear edit</div>
+        <h2>Oltre<br>la scarpa.</h2>
+        <a href="#streetwear" class="btn magnetic" style="background:var(--ink);color:var(--bone);border-color:var(--ink);">Esplora la selezione</a>
+      </div>
+      <div class="mag-right">
+        <div class="mag-tile t1"><div class="mag-name">Capi tecnici</div><div class="mag-tag">Outerwear · FW</div></div>
+        <div class="mag-tile t2"><div class="mag-name">Accessori</div><div class="mag-tag">Caps · Bags · Socks</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head rv">
+      <h2>Seguici live.</h2>
+      <a href="https://instagram.com" target="_blank" class="btn btn-ghost magnetic">@pickandroll su Instagram</a>
+    </div>
+    <div class="ig-grid rv-stagger">
+      <div class="ig-tile ig-1"><div class="ig-overlay">♥ 214</div></div>
+      <div class="ig-tile ig-2"><div class="ig-overlay">♥ 188</div></div>
+      <div class="ig-tile ig-3"><div class="ig-overlay">♥ 342</div></div>
+      <div class="ig-tile ig-4"><div class="ig-overlay">♥ 97</div></div>
+      <div class="ig-tile ig-5"><div class="ig-overlay">♥ 261</div></div>
+      <div class="ig-tile ig-6"><div class="ig-overlay">♥ 150</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker"></div>
+</div>
+
+<!-- STORE -->
+<section class="section" id="store">
+  <div class="wrap">
+    <div class="store rv">
+      <div class="store-info">
+        <div class="eyebrow">Store experience</div>
+        <h2>Vieni a trovarci<br>a Faenza.</h2>
+        <div class="store-row"><span class="label">Indirizzo</span><span>Corso Garibaldi, Faenza (RA)</span></div>
+        <div class="store-row"><span class="label">Orari</span><span>Lun–Sab · 10:00–13:00, 15:30–19:30</span></div>
+        <div class="store-row"><span class="label">Telefono</span><span>+39 0546 000 000</span></div>
+        <div class="store-row"><span class="label">Servizi</span><span>Legit check, riparazioni, ritiro in negozio</span></div>
+        <div style="margin-top:32px;"><a href="#" class="btn btn-primary magnetic">Indicazioni stradali</a></div>
+      </div>
+      <div class="store-map">
+        <div class="pin">
+          <div class="pin-dot"></div>
+          <div class="pin-label">Corso Garibaldi · Faenza</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">PICK<span>&</span>ROLL</div>
+        <p>Sneaker store e streetwear a Faenza. Autenticità, cultura e community da quasi un decennio.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Negozio</h4>
+        <a href="#sneakers">Sneakers</a>
+        <a href="#streetwear">Streetwear</a>
+        <a href="#release">Nuove Release</a>
+      </div>
+      <div class="foot-col">
+        <h4>Info</h4>
+        <a href="#">Chi siamo</a>
+        <a href="#">Legit check</a>
+        <a href="#contatti">Contatti</a>
+      </div>
+      <div class="foot-col">
+        <h4>Social</h4>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Pick&Roll — Faenza, IT</span>
+      <span>Privacy · Cookie · P.IVA 00000000000</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---- Marquee content ----
+const brands = ["JORDAN","NIKE","NEW BALANCE","ADIDAS","ASICS","CONVERSE"];
+const m1 = document.getElementById('marquee1');
+m1.innerHTML = Array(2).fill(brands.map(b=>`<span>${b}</span>`).join('')).join('');
+
+// ---- Hero kinetic wordmark: ROLL spins into place around the amp (pick & roll) ----
+const rollWord = document.getElementById('rollWord');
+"ROLL".split("").forEach((ch,i)=>{
+  const s = document.createElement('span');
+  s.textContent = ch;
+  s.style.opacity = 0;
+  s.style.transform = `translateY(40px) rotate(${(i%2?1:-1)*40}deg)`;
+  s.style.transition = `opacity .8s var(--ease) ${0.5 + i*0.08}s, transform .9s var(--ease) ${0.5 + i*0.08}s`;
+  rollWord.appendChild(s);
+});
+const amp = document.getElementById('amp');
+amp.style.transform = "rotate(-25deg) scale(.6)";
+amp.style.opacity = 0;
+amp.style.transition = "transform 1s var(--ease) .1s, opacity .8s var(--ease) .1s";
+requestAnimationFrame(()=>{
+  setTimeout(()=>{
+    amp.style.transform = "rotate(0deg) scale(1)";
+    amp.style.opacity = 1;
+    rollWord.querySelectorAll('span').forEach(s=>{
+      s.style.opacity = 1;
+      s.style.transform = "translateY(0) rotate(0deg)";
+    });
+  }, 80);
+});
+
+// ---- Header scroll state ----
+const header = document.getElementById('header');
+window.addEventListener('scroll', ()=>{
+  header.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+// ---- Scroll reveal ----
+const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+},{threshold:0.18});
+document.querySelectorAll('.rv, .rv-stagger').forEach(el=>{
+  if(reduced){ el.classList.add('in'); } else { io.observe(el); }
+});
+
+// ---- Magnetic buttons ----
+if(!reduced){
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove', e=>{
+      const r = btn.getBoundingClientRect();
+      const x = (e.clientX - r.left - r.width/2) * 0.35;
+      const y = (e.clientY - r.top - r.height/2) * 0.5;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    });
+    btn.addEventListener('mouseleave', ()=>{ btn.style.transform = 'translate(0,0)'; btn.style.transition='transform .4s var(--ease)'; });
+    btn.addEventListener('mouseenter', ()=>{ btn.style.transition='transform .05s linear'; });
+  });
+
+  // ---- Product card tilt ----
+  document.querySelectorAll('.product-card').forEach(card=>{
+    card.addEventListener('mousemove', e=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left)/r.width - 0.5;
+      const py = (e.clientY - r.top)/r.height - 0.5;
+      card.style.transform = `perspective(700px) rotateX(${py*-8}deg) rotateY(${px*8}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', ()=>{ card.style.transform = 'none'; });
+  });
+
+  // ---- Hero arcs subtle parallax on mouse ----
+  const arcs = document.querySelectorAll('.court-arc');
+  document.querySelector('.hero').addEventListener('mousemove', e=>{
+    const x = (e.clientX/window.innerWidth - 0.5) * 18;
+    const y = (e.clientY/window.innerHeight - 0.5) * 18;
+    arcs.forEach((a,i)=>{ a.style.transform = `translate(calc(-50% + ${x*(i+1)}px), ${y*(i+1)}px)`; });
+  });
+}
+
+// ---- Testimonials ticker ----
+const reviews = [
+  {q:"Legit check serio, mi hanno spiegato ogni dettaglio prima dell'acquisto. Tornerò per il prossimo drop.", who:"Marco · Faenza"},
+  {q:"Finalmente un negozio dove senti che chi ti consiglia conosce davvero le sneaker.", who:"Giulia · Ravenna"},
+  {q:"Ho trovato la Jordan 4 che cercavo da mesi. Servizio impeccabile.", who:"Davide · Bologna"},
+  {q:"Community top, eventi e drop sempre puntuali su Instagram.", who:"Sara · Imola"},
+];
+const ticker = document.getElementById('ticker');
+const renderQuotes = ()=> reviews.map(r=>`
+  <div class="quote-card">
+    <div class="stars">★★★★★</div>
+    <p>${r.q}</p>
+    <div class="who">${r.who}</div>
+  </div>`).join('');
+ticker.innerHTML = renderQuotes() + renderQuotes();
+
+// ---- Mobile menu ----
+const burger = document.getElementById('burger');
+const navLinks = document.querySelector('.nav-links');
+burger.addEventListener('click', ()=>{
+  const open = navLinks.style.display === 'flex';
+  navLinks.style.display = open ? 'none' : 'flex';
+  navLinks.style.position = 'absolute';
+  navLinks.style.top = '64px';
+  navLinks.style.left = '0';
+  navLinks.style.right = '0';
+  navLinks.style.flexDirection = 'column';
+  navLinks.style.background = 'rgba(10,10,10,.97)';
+  navLinks.style.padding = '24px 32px';
+  navLinks.style.gap = '20px';
+});
+</script>
+
+</body>
+</html>

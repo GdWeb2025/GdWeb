@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contatti — M.K.A. Global Fitness Faenza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="dot"></span>M.K.A. GLOBAL FITNESS</div>
+    <div class="navlinks">
+      <a href="index.html">Home</a>
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contatti.html" class="active">Contatti</a>
+    </div>
+    <a href="https://app.wellnessincloud.it/mkaglobalfitness/Account/Login" target="_blank" class="nav-cta">Iscriviti ora</a>
+    <button class="burger" aria-label="Menu"><i data-lucide="menu" aria-hidden="true"></i></button>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a><span class="sep">/</span><span class="current">Contatti</span>
+    </div>
+    <h1 class="page-title">Ti aspettiamo</h1>
+    <p class="page-sub">Scrivi su WhatsApp, manda una mail, oppure vieni direttamente in palestra per vedere la sala e parlare con i personal trainer.</p>
+  </div>
+</section>
+
+<section class="section border-b">
+  <div class="wrap contact-grid">
+    <div>
+      <div class="sec-eyebrow">Dove siamo</div>
+      <h2 class="sec-title" style="margin-bottom:24px; font-size:clamp(22px,3vw,30px);">Via F.lli Rosselli, 40/A</h2>
+      <ul class="info-list" style="margin-bottom:28px;">
+        <li>
+          <span class="ico"><i data-lucide="map-pin" aria-hidden="true"></i></span>
+          <span>Via F.lli Rosselli, 40/A — 48018 Faenza (RA)</span>
+        </li>
+        <li>
+          <span class="ico"><i data-lucide="clock-3" aria-hidden="true"></i></span>
+          <span>05:00 – 00:00, tutti i giorni</span>
+        </li>
+        <li>
+          <span class="ico"><i data-lucide="phone" aria-hidden="true"></i></span>
+          <a href="tel:3312240322" style="color:inherit;">331 224 0322</a>
+        </li>
+        <li>
+          <span class="ico"><i data-lucide="mail" aria-hidden="true"></i></span>
+          <a href="mailto:mkaglobalfitness@gmail.com" style="color:inherit;">mkaglobalfitness@gmail.com</a>
+        </li>
+      </ul>
+      <a href="https://wa.me/+393312240322" target="_blank" class="btn-primary">Scrivi su WhatsApp →</a>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://maps.google.com/maps?q=mka%20global%20fitness%20Via%20F.lli%20Rosselli%2C%2040%2FA%2C%2048018%20Faenza%20RA%2C%20Italia&t=m&z=15&output=embed&iwloc=near" title="Mappa M.K.A. Global Fitness, Via F.lli Rosselli 40/A, Faenza" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="sec-eyebrow">Scrivici</div>
+        <h2 class="sec-title">Richiedi informazioni</h2>
+      </div>
+      <p class="sec-desc">Per domande su abbonamenti, personal trainer o accesso alla sala. Rispondiamo di solito entro un giorno.</p>
+    </div>
+    <div class="form-card">
+      <form name="contatti" method="POST" action="grazie.html" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contatti">
+        <p hidden>
+          <label>Lascia vuoto questo campo: <input name="bot-field"></label>
+        </p>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Il tuo nome">
+          </div>
+          <div class="form-field">
+            <label for="cognome">Cognome</label>
+            <input type="text" id="cognome" name="cognome" placeholder="Il tuo cognome">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Numero di telefono">
+          </div>
+          <div class="form-field">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="La tua email" required>
+          </div>
+        </div>
+        <div class="form-field full" style="margin-bottom:14px;">
+          <label for="messaggio">Messaggio</label>
+          <textarea id="messaggio" name="messaggio" placeholder="Scrivi qui la tua richiesta"></textarea>
+        </div>
+        <label class="form-check">
+          <input type="checkbox" required>
+          <span>Ho letto l'<a href="https://mkaglobalfitness.it/privacy-policy/">informativa privacy</a> ai sensi del Regolamento (UE) 2016/679 (GDPR).</span>
+        </label>
+        <button type="submit" class="form-submit">Invia richiesta</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo"><span class="dot"></span>M.K.A. GLOBAL FITNESS</div>
+        <p class="footer-about">La palestra no-stop di Faenza. Aperta ogni giorno dalle 5 del mattino, senza vincoli e senza scuse.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/m.k.a.globalfitness/" target="_blank" aria-label="Instagram">IG</a>
+          <a href="https://share.google/QgAnlAO3dKM6AgZDB" target="_blank" aria-label="Google">G</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Indirizzo</div>
+        <p>Via F.lli Rosselli, 40/A<br>48018 Faenza (RA)</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contatti</div>
+        <a href="tel:3312240322">331 224 0322</a>
+        <a href="mailto:mkaglobalfitness@gmail.com">mkaglobalfitness@gmail.com</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Orari</div>
+        <p>Tutti i giorni<br>05:00 — 24:00</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Copyright © 2026 — M.K.A. GLOBAL FITNESS S.R.L. — P.IVA 2766170399</span>
+      <div class="footer-bottom-links">
+        <a href="https://mkaglobalfitness.it/privacy-policy/">Privacy Policy</a>
+        <a href="https://mkaglobalfitness.it/cookie-policy-ue/">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script defer src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<script defer src="script.js"></script>
+</body>
+</html>

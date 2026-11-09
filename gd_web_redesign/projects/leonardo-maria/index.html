@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LMDV Capital | Single-family office e venture capital, Milano</title>
+  <meta name="description" content="LMDV Capital è un single-family office con sede a Milano che investe in venture capital, private equity e imprese italiane d'eccellenza. Capitale paziente e supporto strategico per imprenditori visionari.">
+  <meta name="theme-color" content="#05082f">
+  <meta name="color-scheme" content="dark light">
+  <link rel="canonical" href="https://lmdvcapital.it/">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LMDV Capital">
+  <meta property="og:title" content="LMDV Capital | We empower visionaries">
+  <meta property="og:description" content="Single-family office di Milano: investimenti diretti e indiretti, Made in Italy, tecnologia e lifestyle.">
+  <meta property="og:url" content="https://lmdvcapital.it/">
+  <meta property="og:image" content="https://lmdvcapital.it/wp-content/uploads/2024/11/logo-LMDV.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="https://lmdvcapital.it/wp-content/uploads/2024/10/delfino-bianco-1.svg" type="image/svg+xml">
+
+  <!-- Font: caricamento non bloccante -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Outfit:wght@300;400;500;600&display=swap">
+
+  <!-- Applica il tema salvato prima del rendering (evita il flash) -->
+  <script>
+    try {
+      var t = localStorage.getItem("lmdv-theme");
+      if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+    } catch (e) {}
+  </script>
+
+  <!-- Gestione consenso cookie (CookieYes, come nel sito attuale) -->
+  <script id="cookieyes" src="https://cdn-cookieyes.com/client_data/bc0c653f05c67997d1ab6573/script.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "LMDV Capital",
+    "url": "https://lmdvcapital.it/",
+    "logo": "https://lmdvcapital.it/wp-content/uploads/2024/11/logo-LMDV.png",
+    "email": "info@lmdvcapital.it",
+    "vatID": "IT12326310963",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Via Turati 29/A",
+      "postalCode": "20121",
+      "addressLocality": "Milano",
+      "addressRegion": "MI",
+      "addressCountry": "IT"
+    },
+    "sameAs": ["https://www.linkedin.com/company/lmdv-capital-s-r-l/"]
+  }
+  </script>
+
+  <style>
+    /* ---------- Token ---------- */
+    :root {
+      --navy: #05082f;
+      --accent: #46a1c1;
+
+      --bg: #05082f;
+      --bg-alt: #0a0f45;
+      --surface: #0d1252;
+      --text: #ffffff;
+      --muted: #b4bdd6;
+      --line: rgba(255, 255, 255, .16);
+      --accent-text: #6cbad6;      /* accento leggibile su sfondo scuro */
+      --header-bg: rgba(5, 8, 47, .82);
+      --logo-filter: grayscale(1) invert(1) brightness(5);
+
+      --font-display: "Outfit", system-ui, sans-serif;
+      --font-body: "DM Sans", system-ui, sans-serif;
+
+      --wrap: 1200px;
+      --gutter: clamp(1.25rem, 4vw, 3rem);
+      --section: clamp(4rem, 9vw, 8rem);
+      --header-h: 72px;
+    }
+    :root[data-theme="light"] {
+      --bg: #fcfcfc;
+      --bg-alt: #eef3f7;
+      --surface: #ffffff;
+      --text: #05082f;
+      --muted: #454a63;
+      --line: rgba(5, 8, 47, .16);
+      --accent-text: #25728f;      /* contrasto AA su sfondo chiaro */
+      --header-bg: rgba(252, 252, 252, .88);
+      --logo-filter: grayscale(1);
+    }
+
+    /* ---------- Base ---------- */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-h); -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 400 1.0625rem/1.65 var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      transition: background-color .3s, color .3s;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; }
+    p { margin: 0 0 1.1em; max-width: 62ch; }
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.12; letter-spacing: -.02em; margin: 0; text-wrap: balance; }
+    h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
+    h3 { font-size: clamp(1.25rem, 2vw, 1.6rem); letter-spacing: -.01em; }
+    strong, b { font-weight: 700; }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .wrap { width: min(100% - 2 * var(--gutter), var(--wrap)); margin-inline: auto; }
+    .section { padding-block: var(--section); }
+    .section--alt { background: var(--bg-alt); }
+    .kicker { color: var(--accent-text); font-weight: 500; margin: 0 0 1rem; }
+    .lead { font-size: clamp(1.1rem, 1.5vw, 1.3rem); color: var(--text); }
+
+    .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--accent); color: #fff; padding: .6rem 1rem; z-index: 100; transition: top .2s; }
+    .skip-link:focus { top: 1rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    /* ---------- Header ---------- */
+    .site-header {
+      position: fixed; inset: 0 0 auto 0; z-index: 50;
+      height: var(--header-h);
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .site-header .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .brand img { height: 30px; width: auto; }
+    .brand .logo-light, :root[data-theme="light"] .brand .logo-dark { display: none; }
+    :root[data-theme="light"] .brand .logo-light { display: block; }
+
+    .nav { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2.2rem); }
+    .nav ul { display: flex; gap: clamp(1rem, 2.4vw, 2.2rem); list-style: none; margin: 0; padding: 0; }
+    .nav a { text-decoration: none; font-weight: 500; font-size: .98rem; padding-block: .4rem; border-bottom: 2px solid transparent; transition: border-color .2s, color .2s; }
+    .nav a:hover { border-color: var(--accent); }
+
+    .icon-btn {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid var(--line); background: transparent; color: var(--text);
+      display: inline-grid; place-items: center; cursor: pointer;
+      transition: background-color .2s, border-color .2s;
+    }
+    .icon-btn:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+    .icon-btn svg { width: 20px; height: 20px; }
+    .theme-toggle .i-moon { display: none; }
+    :root[data-theme="light"] .theme-toggle .i-sun { display: none; }
+    :root[data-theme="light"] .theme-toggle .i-moon { display: block; }
+    .menu-toggle { display: none; }
+
+    @media (max-width: 860px) {
+      .menu-toggle { display: inline-grid; }
+      .nav ul {
+        position: absolute; inset: var(--header-h) 0 auto 0;
+        flex-direction: column; gap: 0;
+        background: var(--bg); border-bottom: 1px solid var(--line);
+        padding: .5rem var(--gutter) 1.25rem;
+        display: none;
+      }
+      .nav ul.is-open { display: flex; }
+      .nav ul a { display: block; padding: 1rem 0; font-size: 1.15rem; border-bottom: 1px solid var(--line); }
+    }
+
+    /* ---------- Dissolvenza tra immagini (hero e gallerie) ---------- */
+    .fade-stack { position: relative; overflow: hidden; background: var(--navy); }
+    .fade-stack img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0;
+      animation: fade var(--total, 18s) infinite both;
+      animation-delay: calc(var(--total, 18s) / 3 * var(--i, 0));
+    }
+    @keyframes fade {
+      0%   { opacity: 0; transform: scale(1); }
+      6%   { opacity: 1; }
+      33%  { opacity: 1; }
+      39%  { opacity: 0; }
+      100% { opacity: 0; transform: scale(1.08); }
+    }
+
+    /* ---------- Hero ---------- */
+    .hero { position: relative; min-height: max(100svh, 520px); display: grid; align-items: center; color: #fff; isolation: isolate; }
+    .hero .fade-stack { position: absolute; inset: 0; z-index: -2; --total: 27s; }
+    .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(5,8,47,.55), rgba(5,8,47,.7)); }
+    .hero-inner { padding-top: var(--header-h); text-align: center; }
+    .hero-lead { font: 400 clamp(1.25rem, 2.6vw, 2rem)/1.2 var(--font-display); margin: 0 auto .4em; max-width: none; }
+    .hero h1 { font-size: clamp(2.5rem, 8.2vw, 6.5rem); line-height: 1; letter-spacing: -.035em; font-weight: 500; }
+    .scroll-cue { position: absolute; left: 50%; bottom: 2rem; translate: -50% 0; width: 44px; height: 64px; display: grid; place-items: center; color: #fff; }
+    .scroll-cue svg { width: 28px; animation: bob 2.4s ease-in-out infinite; }
+    @keyframes bob { 50% { translate: 0 8px; } }
+
+    /* ---------- Layout a due colonne ---------- */
+    .split { display: grid; gap: clamp(2rem, 5vw, 5rem); align-items: center; }
+    @media (min-width: 900px) {
+      .split { grid-template-columns: 1fr 1fr; }
+      .split--wide-text { grid-template-columns: 2fr 3fr; }
+      .split--wide-text-rev { grid-template-columns: 3fr 2fr; }
+      .split--top { align-items: start; }
+    }
+    .media { border-radius: 4px; overflow: hidden; aspect-ratio: 4 / 3; }
+    .media img { width: 100%; height: 100%; object-fit: cover; }
+    .media.fade-stack { aspect-ratio: 4 / 3; }
+    @media (min-width: 900px) { .media--tall { aspect-ratio: 4 / 5; } }
+    .text > h2 { margin-bottom: 1.5rem; }
+
+    /* ---------- Vision / Mission ---------- */
+    .duo { display: grid; gap: clamp(2rem, 5vw, 5rem); }
+    @media (min-width: 900px) { .duo { grid-template-columns: 1fr 1fr; } }
+    .duo article { border-top: 1px solid var(--accent); padding-top: 1.5rem; }
+    .duo h2 { margin-bottom: 1.5rem; }
+
+    /* ---------- Progetti: scorrimento logo ---------- */
+    .projects h2 { margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+    .marquee { overflow: hidden; border-block: 1px solid var(--line); padding-block: 2rem;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+    .marquee-track { display: flex; width: max-content; animation: scroll 70s linear infinite; }
+    .marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+    .marquee ul { display: flex; align-items: center; gap: clamp(3rem, 6vw, 5rem); list-style: none; margin: 0; padding: 0 clamp(1.5rem, 3vw, 2.5rem); }
+    .marquee img { height: 44px; width: auto; max-width: 180px; object-fit: contain; filter: var(--logo-filter); opacity: .9; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+
+    /* ---------- Banner frase ---------- */
+    .statement { text-align: center; padding-block: clamp(5rem, 12vw, 10rem); }
+    .statement p { margin: 0 auto; max-width: 20ch; font: 300 clamp(2.4rem, 7vw, 5.5rem)/1.04 var(--font-display); letter-spacing: -.035em; color: var(--accent-text); }
+
+    /* ---------- Valori ---------- */
+    .values { list-style: none; margin: clamp(2rem, 4vw, 3.5rem) 0 0; padding: 0; }
+    .values li { display: grid; gap: .75rem 2rem; padding-block: 2rem; border-top: 1px solid var(--line); align-items: start; }
+    .values li:last-child { border-bottom: 1px solid var(--line); }
+    .values h3 { color: var(--accent-text); }
+    .values p { margin: 0; }
+    @media (min-width: 760px) { .values li { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); } }
+
+    /* ---------- Contatti ---------- */
+    .contact { position: relative; isolation: isolate; color: #fff; }
+    .contact::before { content: ""; position: absolute; inset: 0; z-index: -2;
+      background: url("https://lmdvcapital.it/wp-content/uploads/2024/11/BoxInfo.png") center / cover no-repeat; }
+    .contact::after { content: ""; position: absolute; inset: 0; z-index: -1; background: rgba(5, 8, 47, .72); }
+    .contact-grid { display: grid; gap: 2.5rem; align-items: center; }
+    @media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .contact address { font-style: normal; margin-top: 1.5rem; }
+    .contact address strong { display: block; margin-bottom: .2rem; }
+    .contact .kicker { color: #9fd3e6; }
+
+    .form-card { background: #fff; color: var(--navy); padding: clamp(1.5rem, 3vw, 2.5rem); border-radius: 4px; }
+    .field { margin-bottom: 1.1rem; }
+    .field label { display: block; font-weight: 500; margin-bottom: .35rem; }
+    .field .opt { font-weight: 400; color: #4a4f6a; }
+    .field input[type="text"], .field input[type="email"], .field textarea {
+      width: 100%; font: inherit; color: var(--navy);
+      padding: .75rem .9rem; background: #f5f7fa;
+      border: 1px solid #aeb6c8; border-radius: 3px;
+    }
+    .field textarea { min-height: 9rem; resize: vertical; }
+    .field input:focus-visible, .field textarea:focus-visible { outline: 3px solid var(--accent); outline-offset: 1px; border-color: var(--navy); }
+    .consent { display: flex; gap: .7rem; align-items: flex-start; font-size: .95rem; }
+    .consent input { margin-top: .3rem; width: 1.1rem; height: 1.1rem; accent-color: var(--navy); flex: none; }
+    .consent a { color: #25728f; }
+    .btn { font: 500 1rem var(--font-display); background: var(--navy); color: #fff; border: 2px solid var(--navy); padding: .85rem 2rem; border-radius: 999px; cursor: pointer; transition: background-color .2s, color .2s; }
+    .btn:hover { background: var(--accent); border-color: var(--accent); }
+    .form-status { margin: 1rem 0 0; min-height: 1.5em; font-weight: 500; }
+
+    /* ---------- Footer ---------- */
+    .site-footer { border-top: 1px solid var(--line); padding-block: 3rem; font-size: .98rem; }
+    .footer-grid { display: grid; gap: 2rem; }
+    @media (min-width: 800px) { .footer-grid { grid-template-columns: 1.2fr 1.2fr 1.4fr auto auto; align-items: start; } }
+    .footer-grid p { margin: 0; }
+    .footer-logo { height: 34px; width: auto; }
+    .footer-logo.logo-light, :root[data-theme="light"] .footer-logo.logo-dark { display: none; }
+    :root[data-theme="light"] .footer-logo.logo-light { display: block; }
+    .site-footer a { text-underline-offset: .2em; }
+    .social { display: inline-grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--line); }
+    .social:hover { border-color: var(--accent); }
+    .social svg { width: 20px; height: 20px; }
+
+    /* ---------- Movimento ridotto ---------- */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-stack img { animation: none; }
+      .fade-stack img:first-child { opacity: 1; }
+      .marquee { mask-image: none; -webkit-mask-image: none; overflow-x: auto; }
+      .marquee-track { animation: none; }
+      .marquee-track ul[aria-hidden="true"] { display: none; }
+      .scroll-cue svg { animation: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html" aria-label="LMDV Capital, home">
+        <img class="logo-dark" src="https://lmdvcapital.it/wp-content/uploads/2024/11/logo-LMDV.png" alt="LMDV Capital" width="551" height="68">
+        <img class="logo-light" src="https://lmdvcapital.it/wp-content/uploads/2024/11/logo-LMDV_blue.png" alt="" width="551" height="68">
+      </a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <ul id="menu">
+          <li><a href="#about-us">About us</a></li>
+          <li><a href="#why-partner-with-us">Why partner with us</a></li>
+          <li><a href="#our-partners">Our partners</a></li>
+          <li><a href="https://lmdvcapital.it/news/">News</a></li>
+          <li><a href="#contact-us">Contact us</a></li>
+        </ul>
+
+        <button class="icon-btn theme-toggle" type="button" aria-label="Toggle light and dark theme">
+          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+
+        <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="fade-stack" aria-hidden="true">
+        <img style="--i:0" src="https://lmdvcapital.it/wp-content/uploads/2026/02/LMDV_esterno_C2_08944_FM_v03b-scaled.jpg" alt="" width="2560" height="2253" fetchpriority="high" decoding="async">
+        <img style="--i:1" src="https://lmdvcapital.it/wp-content/uploads/2025/09/LMDV_uffici_7229_FM_v01-copy.jpg" alt="" width="2250" height="1500" loading="lazy" decoding="async">
+        <img style="--i:2" src="https://lmdvcapital.it/wp-content/uploads/2026/02/LMDV_CV1A1335_FM_v02_b-scaled.jpg" alt="" width="2560" height="1706" loading="lazy" decoding="async">
+      </div>
+      <div class="wrap hero-inner">
+        <p class="hero-lead">We don't simply invest</p>
+        <h1 id="hero-title">We empower visionaries</h1>
+      </div>
+      <a class="scroll-cue" href="#about-us" aria-label="Scroll to the next section">
+        <svg viewBox="0 0 40 62" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 2v56M3 42l17 17 17-17"/></svg>
+      </a>
+    </section>
+
+    <!-- ===== About us ===== -->
+    <section class="section" id="about-us" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="split split--wide-text-rev">
+          <div class="media fade-stack media--tall" style="--total:1s">
+            <img style="opacity:1;animation:none" src="https://lmdvcapital.it/wp-content/uploads/2025/08/LMDV_uffici_3102_FM_v01-copy.jpg" alt="LMDV Capital offices in Milan" width="2250" height="1500" loading="lazy" decoding="async">
+          </div>
+          <div class="text">
+            <p class="kicker">About us</p>
+            <h2 id="about-title">Welcome to LMDV Capital, an Italian single-family office headquartered in Milan.</h2>
+            <p>Fully backed by <b>Leonardo Maria Del Vecchio</b>, shareholder of EssilorLuxottica Group and Founder and President of Fondazione LMDV, <strong>LMDV Capital specializes in investing across multiple asset classes.</strong> Our portfolio includes <b>indirect investments</b> in venture and growth capital, private equity and hedge funds, and <b>direct investments</b> in leading Italian companies that embody the <b>excellence of Made in Italy</b>. We are committed to supporting entrepreneurial initiatives that preserve and enhance the authentic spirit of Italian craftsmanship. Our geographic focus spans Europe and North America.</p>
+            <p>Unlike traditional family offices, we stand out for our <b>strategic approach</b>. As prominent private investors, we prioritize <b>internationally recognized brands</b> in the technology, lifestyle and consumer goods sectors. Leveraging our extensive industry expertise and global network, we identify and unlock growth opportunities, driving long-term success.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Impegno ===== -->
+    <section class="section section--alt" aria-labelledby="commitment-title">
+      <div class="wrap">
+        <div class="split split--wide-text">
+          <div class="text">
+            <h2 id="commitment-title">Our commitment extends beyond financial returns.</h2>
+            <p>We view entrepreneurs as <i>catalysts for positive, transformative change</i> in both society and the economy. That's why every aspect of LMDV, from our culture to our decision-making processes, is designed to <b>support them</b> on their journey to success.</p>
+            <p>We believe in a hands-on, long-term approach, working closely with entrepreneurs to achieve impactful results while ensuring <b>sustainable growth</b>. We provide strategic guidance to help them scale responsibly and make a meaningful contribution to a better future.</p>
+            <p>Join us at LMDV Capital, where we're more than just investors. We're partners in your journey to success.</p>
+          </div>
+          <div class="media media--tall">
+            <img src="https://lmdvcapital.it/wp-content/uploads/2025/09/LMDV_uffici_0008_FM_v02-copy.jpg" alt="A meeting room at LMDV Capital" width="2250" height="1500" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Vision e Mission ===== -->
+    <section class="section" aria-label="Vision and mission">
+      <div class="wrap duo">
+        <article aria-labelledby="vision-title">
+          <h2 id="vision-title">Our vision</h2>
+          <p>We are committed to enhancing the value of <strong>Made in Italy</strong> by supporting and relaunching brands that embody the <strong>quality</strong>, <strong>tradition</strong> and <strong>innovation</strong> of our country, with a particular focus on hospitality, entertainment, food and new technologies.</p>
+          <p>Our goal is to create an ecosystem of resilient and continuously growing businesses that combine the best of <strong>Italian tradition</strong> with <strong>international innovation</strong>, so that future generations can recognize our <strong>heritage</strong> as a symbol of success and quality.</p>
+          <p>LMDV Capital aspires to become a driver in the entrepreneurial world, where passion and dedication are always directed toward <strong>sustainable</strong>, <strong>responsible</strong> and <strong>meaningful growth</strong>.</p>
+        </article>
+
+        <article aria-labelledby="mission-title">
+          <h2 id="mission-title">Our mission</h2>
+          <p>LMDV Capital's mission is to invest with a clear vision, bringing resources and expertise to entrepreneurs who share our values of <strong>excellence</strong>, <strong>creativity</strong> and <strong>responsibility</strong>.</p>
+          <p>With a strong focus on <strong>Made in Italy</strong>, we are dedicated to supporting brands and initiatives across diverse sectors, from hospitality to fine dining, from cinema to fashion, to preventive medicine and artificial intelligence, always maintaining a <strong>sustainable approach</strong>.</p>
+          <p>We invest with precision and direct involvement, fostering growth through a long-term vision, flexible governance and a strong commitment to social and economic well-being.</p>
+          <p>With deep roots in <strong>tradition</strong> and an <strong>innovative</strong> outlook, we aim to be the partner that helps businesses succeed, creating <strong>synergies</strong> among our portfolio companies and generating a <strong>positive impact</strong> on the global market.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== Progetti ===== -->
+    <section class="section section--alt projects" id="our-projects" aria-labelledby="projects-title">
+      <div class="wrap">
+        <h2 id="projects-title">Our projects</h2>
+      </div>
+      <div class="marquee" role="region" aria-label="Portfolio company logos">
+        <div class="marquee-track">
+          <ul>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/06/ISIMA-1-300x98.png" alt="ISIMA" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/1686Partners-1.png" alt="1686 Partners" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/12/AKIRA.png" alt="Akira" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Cipriani-1.png" alt="Cipriani" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Digital-Platforms-1.png" alt="Digital Platforms" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/E1-1.png" alt="E1" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/02/ESA-NanoTech-black.png" alt="ESA NanoTech" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Fiuggi-1.png" alt="Fiuggi" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/GARIBALDI-RE_LOGO-1.png" alt="Garibaldi RE" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Iconiq-1.png" alt="Iconiq" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/IMA-SPA-1.png" alt="IMA" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/LEONE-FILM-GROUP-1.png" alt="Leone Film Group" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Mangusta-Capital-1.png" alt="Mangusta Capital" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Martel-1.png" alt="Martel" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/MD-Concierge-1.png" alt="MD Concierge" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/SMERALDO-RE_LOGO-1.png" alt="Smeraldo RE" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Sound-1.png" alt="Sound" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Triple-sea-food-1.png" alt="Triple Sea Food" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/TURATI-CLUB-RE_LOGO-1.png" alt="Turati Club RE" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/04/Blu-300x89.png" alt="Blu" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/04/Qomodo-Logo-Dark-300x90.png" alt="Qomodo" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/04/LOGO-COMPLETO-NERO-300x51.png" alt="Portfolio company logo" loading="lazy" decoding="async"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/04/Overthelux_LOGOS_VETT14-copy-300x17.png" alt="Overthelux" loading="lazy" decoding="async"></li>
+          </ul>
+          <!-- Copia per lo scorrimento continuo: nascosta alle tecnologie assistive -->
+          <ul aria-hidden="true">
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/06/ISIMA-1-300x98.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/1686Partners-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/12/AKIRA.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Cipriani-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Digital-Platforms-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/E1-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/02/ESA-NanoTech-black.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Fiuggi-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/GARIBALDI-RE_LOGO-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Iconiq-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/IMA-SPA-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/LEONE-FILM-GROUP-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Mangusta-Capital-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Martel-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/MD-Concierge-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/SMERALDO-RE_LOGO-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Sound-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/Triple-sea-food-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2024/11/TURATI-CLUB-RE_LOGO-1.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/04/Blu-300x89.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/04/Qomodo-Logo-Dark-300x90.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/04/LOGO-COMPLETO-NERO-300x51.png" alt="" loading="lazy"></li>
+            <li><img src="https://lmdvcapital.it/wp-content/uploads/2025/04/Overthelux_LOGOS_VETT14-copy-300x17.png" alt="" loading="lazy"></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Frase manifesto ===== -->
+    <section class="statement" aria-label="Our promise">
+      <div class="wrap">
+        <p>We are partners in your journey to success</p>
+      </div>
+    </section>
+
+    <!-- ===== Why partner with us ===== -->
+    <section class="section" id="why-partner-with-us" aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="split split--top">
+          <div class="text">
+            <p class="kicker">Why partner with us</p>
+            <h2 id="why-title">Partner with LMDV Capital for a trustworthy partnership rooted in shared values and a drive for success.</h2>
+          </div>
+          <div>
+            <div class="media" style="margin-bottom:2rem">
+              <img src="https://lmdvcapital.it/wp-content/uploads/2025/09/LMDV_uffici_7237_FM_v01-copy.jpg" alt="Collaborative workspace at LMDV Capital" width="2250" height="1500" loading="lazy" decoding="async">
+            </div>
+            <h3>Our areas of interest</h3>
+            <p style="margin-top:.8rem">As thematic investors, we draw inspiration from innovative entrepreneurs shaping the future of technology across various sectors, including lifestyle. Our thesis is rooted in the belief that <strong>significant transformations are imminent</strong>, with new realms of innovation emerging periodically.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:clamp(3rem,6vw,5rem)">Here are some of the current focus areas guiding our investments:</h3>
+        <ul class="values">
+          <li>
+            <h3>Collaborative empowerment</h3>
+            <p><i>Greatness happens when diverse perspectives come together.</i> By setting egos aside, we work towards a shared goal: helping you build a <b>world-changing business</b>.</p>
+          </li>
+          <li>
+            <h3>Integrity and accountability</h3>
+            <p>We make decisions with <b>integrity</b>, fostering <b>open discussions</b> and embracing <b>diverse viewpoints</b>. Our goal? To be the investor you're proud to have on your cap table.</p>
+          </li>
+          <li>
+            <h3>True partnership</h3>
+            <p>We build <b>genuine, long-term relationships</b>, understanding the evolving nature of venture investments. Our aim? To consistently earn positive recommendations from the founders we've supported.</p>
+          </li>
+          <li>
+            <h3>Honesty and transparency</h3>
+            <p>We prioritize <b>authenticity</b> and <b>openness</b>. We acknowledge mistakes, learn from them, and work collaboratively towards shared goals. <i>You'll always have someone to talk to, day or night.</i></p>
+          </li>
+          <li>
+            <h3>Calculated risk-taking</h3>
+            <p>We take <b>bold yet well-informed risks</b>, remaining committed to continuous learning. Expect us to challenge you to think big and focus on long-term impact.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Our partners ===== -->
+    <section class="section section--alt" id="our-partners" aria-labelledby="partners-title">
+      <div class="wrap">
+        <div class="split">
+          <div class="text">
+            <p class="kicker">Our partners</p>
+            <h2 id="partners-title">LMDV Capital is dedicated to fostering mutually beneficial partnerships.</h2>
+            <p>With our strong family office heritage, we prioritize <b>collaborative relationships</b> and deeply value the insights of our industry peers.</p>
+            <p>We focus on partnering with entrepreneurs to accelerate their growth and achieve strategic objectives. By leveraging our <b>extensive global network and over 30 years of combined operational experience</b>, we provide not just <b>financial backing</b>, but also hands-on <b>strategic guidance</b>.</p>
+            <p>When selecting partners, we seek alignment in values and a proven track record of excellence.</p>
+          </div>
+          <div class="media fade-stack media--tall" style="--total:18s">
+            <img style="--i:0" src="https://lmdvcapital.it/wp-content/uploads/2024/11/Our-partners1.png" alt="" loading="lazy" decoding="async">
+            <img style="--i:1" src="https://lmdvcapital.it/wp-content/uploads/2024/11/About-us1.png" alt="" loading="lazy" decoding="async">
+            <img style="--i:2" src="https://lmdvcapital.it/wp-content/uploads/2024/11/Header1.png" alt="" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <div class="split split--wide-text-rev" style="margin-top:clamp(3rem,7vw,6rem)">
+          <div class="text">
+            <h2 style="font-size:clamp(1.7rem,3vw,2.5rem)">We offer <b>smart capital</b> and act as <b>operational partners</b>, having invested alongside various financial investors since 2022.</h2>
+            <p style="margin-top:1.5rem">Furthermore, we highly value the collaboration of professionals such as banks, lawyers, consultants and financial advisers. By working together, we strive to generate <b>substantial returns</b> for all stakeholders through <b>innovative ideas</b> and <b>effective solutions</b> tailored to corporate needs.</p>
+            <p>Choose LMDV Capital for an institutional partnership founded on shared values and an unwavering commitment to excellence.</p>
+          </div>
+          <div class="media fade-stack" style="--total:18s">
+            <img style="--i:0" src="https://lmdvcapital.it/wp-content/uploads/2024/11/Our-partners3.png" alt="" loading="lazy" decoding="async">
+            <img style="--i:1" src="https://lmdvcapital.it/wp-content/uploads/2024/11/About-us2.png" alt="" loading="lazy" decoding="async">
+            <img style="--i:2" src="https://lmdvcapital.it/wp-content/uploads/2024/11/Partner-with-us1.png" alt="" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contatti ===== -->
+    <section class="section contact" id="contact-us" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div>
+          <p class="kicker">Contact us</p>
+          <h2 id="contact-title">Have questions? Get in touch.</h2>
+          <address>
+            <strong>Head office</strong>
+            Via Turati 29/A, 20121 Milano
+          </address>
+        </div>
+
+        <form class="form-card" id="contact-form" action="mailto:info@lmdvcapital.it" method="post" enctype="text/plain" novalidate>
+          <div class="field">
+            <label for="f-name">Your name</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" maxlength="400" required>
+          </div>
+          <div class="field">
+            <label for="f-email">Your email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" maxlength="400" required>
+          </div>
+          <div class="field">
+            <label for="f-subject">Subject</label>
+            <input id="f-subject" name="subject" type="text" maxlength="400" required>
+          </div>
+          <div class="field">
+            <label for="f-message">Your message <span class="opt">(optional)</span></label>
+            <textarea id="f-message" name="message" maxlength="2000"></textarea>
+          </div>
+          <div class="field consent">
+            <input id="f-consent" name="consent" type="checkbox" required>
+            <label for="f-consent" style="margin:0;font-weight:400">I declare that I have read the <a href="https://lmdvcapital.it/privacy-policy/">Privacy Policy</a></label>
+          </div>
+          <button class="btn" type="submit">Send message</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <img class="footer-logo logo-dark" src="https://lmdvcapital.it/wp-content/uploads/2024/11/logo-LMDV.png" alt="LMDV Capital" width="551" height="68" loading="lazy">
+        <img class="footer-logo logo-light" src="https://lmdvcapital.it/wp-content/uploads/2024/11/logo-LMDV_blue.png" alt="" width="551" height="68" loading="lazy">
+      </div>
+      <p>Via Turati 29/A<br>20121 Milano (MI)<br>P.IVA 12326310963</p>
+      <p>Email: <a href="mailto:info@lmdvcapital.it">info@lmdvcapital.it</a><br>
+         PEC: <a href="mailto:lmdvcapital@legalmail.it">lmdvcapital@legalmail.it</a></p>
+      <p><a href="https://lmdvcapital.it/note-legali/">Note legali</a></p>
+      <p>
+        <a class="social" href="https://www.linkedin.com/company/lmdv-capital-s-r-l/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3V9.5zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.5z"/></svg>
+        </a>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+
+      // Tema chiaro / scuro
+      document.querySelector(".theme-toggle").addEventListener("click", function () {
+        var next = root.dataset.theme === "light" ? "dark" : "light";
+        root.dataset.theme = next;
+        try { localStorage.setItem("lmdv-theme", next); } catch (e) {}
+      });
+
+      // Menu mobile
+      var btn = document.querySelector(".menu-toggle");
+      var menu = document.getElementById("menu");
+      function setMenu(open) {
+        menu.classList.toggle("is-open", open);
+        btn.setAttribute("aria-expanded", String(open));
+        btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      }
+      btn.addEventListener("click", function () { setMenu(!menu.classList.contains("is-open")); });
+      menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+
+      // Form: validazione e invio
+      // Di default apre il client di posta. In produzione sostituisci la parte
+      // "mailto" con una chiamata fetch() al tuo endpoint (WordPress, Formspree, ecc.).
+      var form = document.getElementById("contact-form");
+      var status = form.querySelector(".form-status");
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var f = form.elements;
+        var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(f.email.value.trim());
+        if (!f.name.value.trim() || !emailOk || !f.subject.value.trim()) {
+          status.textContent = "Please fill in your name, a valid email and a subject.";
+          (!f.name.value.trim() ? f.name : !emailOk ? f.email : f.subject).focus();
+          return;
+        }
+        if (!f.consent.checked) {
+          status.textContent = "Please accept the Privacy Policy to continue.";
+          f.consent.focus();
+          return;
+        }
+        var body = "Name: " + f.name.value + "\nEmail: " + f.email.value + "\n\n" + f.message.value;
+        window.location.href = "mailto:info@lmdvcapital.it?subject=" + encodeURIComponent(f.subject.value) + "&body=" + encodeURIComponent(body);
+        status.textContent = "Opening your email app to send the message.";
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Royal Barber Studio – Barbiere a Faenza. Tagli moderni, precisione assoluta. Prenota il tuo appuntamento.">
+  <meta name="keywords" content="barbiere Faenza, taglio capelli uomo, fade, barba, rasatura tradizionale">
+  <meta property="og:title" content="Royal Barber Studio – Faenza">
+  <meta property="og:description" content="Tagli moderni, precisione assoluta.">
+  <meta property="og:type" content="website">
+  <title>Royal Barber Studio – Faenza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --gray-light: #F5F5F5;
+      --gray-mid: #CCCCCC;
+      --gray-dark: #888888;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gray-mid); }
+
+    /* ── LOADER ── */
+    #loader {
+      position: fixed; inset: 0;
+      background: var(--black);
+      z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      transition: opacity 0.6s var(--ease-out), visibility 0.6s;
+    }
+    #loader.hidden { opacity: 0; visibility: hidden; }
+    .loader-inner {
+      position: relative;
+      display: flex; flex-direction: column; align-items: center; gap: 24px;
+    }
+    .loader-wordmark {
+      font-size: clamp(14px, 2vw, 18px);
+      letter-spacing: 0.35em;
+      color: var(--white);
+      text-transform: uppercase;
+      font-weight: 300;
+      opacity: 0;
+      animation: loaderFade 0.8s 0.3s var(--ease-out) forwards;
+    }
+    .loader-bar-track {
+      width: 120px; height: 1px;
+      background: rgba(255,255,255,0.15);
+      position: relative; overflow: hidden;
+    }
+    .loader-bar-fill {
+      position: absolute; top: 0; left: 0;
+      height: 100%; width: 0;
+      background: var(--white);
+      animation: loaderBar 1.2s 0.4s var(--ease-in-out) forwards;
+    }
+    @keyframes loaderFade { to { opacity: 1; } }
+    @keyframes loaderBar { to { width: 100%; } }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 28px 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.4s var(--ease-out), padding 0.4s var(--ease-out);
+    }
+    nav.scrolled {
+      background: rgba(0,0,0,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 18px 48px;
+    }
+    .nav-logo {
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--white);
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex; gap: 40px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      font-weight: 400;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--white);
+      transition: width 0.3s var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--white);
+      padding: 10px 22px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.25s, color 0.25s;
+    }
+    .nav-cta:hover { background: var(--gray-mid); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 1px;
+      background: var(--white);
+      transition: transform 0.3s var(--ease-out), opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed; inset: 0;
+      background: var(--black);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 36px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s var(--ease-out);
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-size: clamp(28px, 8vw, 48px);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.25s;
+    }
+    .mobile-menu a:hover { color: var(--gray-mid); }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      height: 100vh; min-height: 600px;
+      display: flex; align-items: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(160deg, rgba(26,26,26,0.4) 0%, rgba(0,0,0,0.55) 100%),
+        url('images/hero-barber.jpg');
+      background-position: center, center 45%;
+      background-size: cover;
+    }
+    /* Pattern grid subtile */
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+    /* Razor scan line – the signature element */
+    .razor-line {
+      position: absolute;
+      top: 0; left: -100%; right: -100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.6) 50%, transparent 100%);
+      animation: razorScan 1.4s 1.5s var(--ease-in-out) forwards;
+      opacity: 0;
+    }
+    @keyframes razorScan {
+      0%   { opacity: 0; top: 0; }
+      5%   { opacity: 1; }
+      95%  { opacity: 1; }
+      100% { opacity: 0; top: 100%; }
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      font-weight: 400;
+      margin-bottom: 24px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: revealUp 0.8s 1.8s var(--ease-out) forwards;
+    }
+    .hero-title {
+      font-size: clamp(52px, 9vw, 128px);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: revealUp 0.9s 2.0s var(--ease-out) forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+    .hero-sub {
+      font-size: clamp(14px, 1.8vw, 18px);
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: revealUp 0.8s 2.2s var(--ease-out) forwards;
+    }
+    .hero-ctas {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: revealUp 0.8s 2.4s var(--ease-out) forwards;
+    }
+    .hero-socials {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: revealUp 0.8s 2.6s var(--ease-out) forwards;
+    }
+    .hero-socials-label {
+      margin-right: 4px;
+      color: rgba(255,255,255,0.38);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .hero-social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.76);
+      background: rgba(0,0,0,0.16);
+      text-decoration: none;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.25s;
+    }
+    .hero-social-link:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-2px);
+    }
+    .hero-social-link svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--black);
+      background: var(--white);
+      padding: 16px 36px;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.25s var(--ease-out);
+    }
+    .btn-primary:hover { background: var(--gray-light); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      transition: color 0.25s, border-color 0.25s;
+    }
+    .btn-secondary:hover { color: var(--white); border-color: var(--white); }
+
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 40px; right: 48px;
+      z-index: 2;
+      display: flex; align-items: center; gap: 12px;
+      opacity: 0;
+      animation: revealUp 0.8s 2.8s var(--ease-out) forwards;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: rgba(255,255,255,0.3);
+      position: relative; overflow: hidden;
+    }
+    .scroll-line::after {
+      content: '';
+      position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: var(--white);
+      animation: scrollPulse 2s 3s infinite var(--ease-in-out);
+    }
+    @keyframes scrollPulse {
+      0%   { left: -100%; }
+      50%  { left: 0%; }
+      100% { left: 100%; }
+    }
+    .scroll-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      writing-mode: vertical-rl;
+    }
+
+    @keyframes revealUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { position: relative; }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+      font-weight: 400;
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 60px;
+    }
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 32px; height: 1px;
+      background: var(--gray-mid);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ── INTRO STRIP ── */
+    #intro-strip {
+      background: var(--black);
+      padding: 28px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .strip-text {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      white-space: nowrap;
+    }
+    .strip-divider {
+      width: 1px; height: 14px;
+      background: rgba(255,255,255,0.12);
+      flex-shrink: 0;
+    }
+
+    /* ── PHILOSOPHY ── */
+    #philosophy {
+      padding: 140px 48px;
+      background: var(--white);
+    }
+    .philosophy-inner {
+      max-width: 1300px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: end;
+    }
+    .philosophy-left {}
+    .philosophy-heading {
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      margin-bottom: 0;
+    }
+    .philosophy-heading strong { font-weight: 600; }
+    .philosophy-right {}
+    .philosophy-body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #444;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+    .philosophy-stat {
+      display: flex; align-items: baseline; gap: 12px;
+      border-top: 1px solid var(--gray-light);
+      padding-top: 28px;
+    }
+    .stat-number {
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+    }
+    .stat-label {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray-dark);
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 140px 48px;
+      background: var(--gray-light);
+    }
+    .services-inner { max-width: 1300px; margin: 0 auto; }
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 80px;
+      flex-wrap: wrap; gap: 24px;
+    }
+    .services-title {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 300;
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 44px 36px;
+      cursor: default;
+      transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--black);
+      transition: width 0.4s var(--ease-out);
+    }
+    .service-card:hover { background: var(--black); transform: translateY(-4px); }
+    .service-card:hover::before { width: 100%; }
+    .service-card:hover .service-name,
+    .service-card:hover .service-desc,
+    .service-card:hover .service-price { color: var(--white); }
+    .service-card:hover .service-icon { color: rgba(255,255,255,0.3); }
+    .service-icon {
+      font-size: 28px;
+      margin-bottom: 32px;
+      color: var(--gray-mid);
+      transition: color 0.3s;
+      display: block;
+    }
+    .service-name {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+    .service-desc {
+      font-size: 13px;
+      color: var(--gray-dark);
+      line-height: 1.7;
+      font-weight: 300;
+      transition: color 0.3s;
+      margin-bottom: 28px;
+    }
+    .service-price {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .service-duration {
+      font-size: 11px;
+      color: var(--gray-dark);
+      letter-spacing: 0.1em;
+      margin-left: 8px;
+      font-weight: 300;
+    }
+
+    /* ── PORTFOLIO ── */
+    #portfolio {
+      padding: 140px 48px;
+      background: var(--white);
+    }
+    .portfolio-inner { max-width: 1300px; margin: 0 auto; }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin-top: 64px;
+    }
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--gray-light);
+    }
+    .portfolio-img-wrap {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      display: block;
+    }
+    .portfolio-image {
+      width: 100%; height: 100%; min-height: 200px;
+      background: var(--gray-light);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.6s var(--ease-out);
+    }
+    .portfolio-item:hover .portfolio-image { transform: scale(1.04); }
+    .portfolio-image img {
+      display: block;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      position: absolute; inset: 0;
+    }
+
+    .portfolio-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 38px 18px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.14) 76%, transparent 100%);
+      color: var(--white);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background 0.3s;
+    }
+    .portfolio-item:hover .portfolio-label {
+      background: linear-gradient(to top, rgba(0,0,0,0.84) 0%, rgba(0,0,0,0.2) 82%, transparent 100%);
+    }
+    .portfolio-credit {
+      margin-top: 24px;
+      color: var(--gray-dark);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-align: right;
+    }
+    .portfolio-credit a {
+      color: var(--black);
+      text-decoration-color: var(--gray-mid);
+      text-underline-offset: 3px;
+    }
+    .portfolio-credit a:hover { text-decoration-color: var(--black); }
+
+    /* ── WHY US ── */
+    #why-us {
+      padding: 140px 48px;
+      background: var(--black);
+      color: var(--white);
+    }
+    .why-inner { max-width: 1300px; margin: 0 auto; }
+    .why-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 100px;
+      align-items: end;
+    }
+    .why-title {
+      font-size: clamp(40px, 6vw, 80px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+    }
+    .why-intro {
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      align-self: end;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+    .why-card {
+      padding: 48px 36px;
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.3s;
+    }
+    .why-card:hover { background: #111; }
+    .why-num {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: rgba(255,255,255,0.2);
+      margin-bottom: 40px;
+      font-weight: 400;
+    }
+    .why-card-title {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+    .why-card-body {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.45);
+      font-weight: 300;
+    }
+
+    /* ── REVIEWS ── */
+    #reviews {
+      padding: 140px 48px;
+      background: var(--white);
+      overflow: hidden;
+    }
+    .reviews-inner { max-width: 1300px; margin: 0 auto; }
+    .reviews-carousel-wrap { position: relative; overflow: hidden; margin-top: 80px; }
+    .reviews-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.7s var(--ease-out);
+    }
+    .review-card {
+      min-width: calc(33.333% - 16px);
+      flex-shrink: 0;
+      padding: 44px 40px;
+      background: var(--gray-light);
+      position: relative;
+    }
+    .review-stars {
+      display: flex; gap: 4px;
+      margin-bottom: 24px;
+    }
+    .star {
+      width: 10px; height: 10px;
+      background: var(--black);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .review-text {
+      font-size: 16px;
+      line-height: 1.75;
+      font-weight: 300;
+      color: #222;
+      margin-bottom: 32px;
+      font-style: italic;
+    }
+    .review-author {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--black);
+    }
+    .review-meta {
+      font-size: 11px;
+      color: var(--gray-dark);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+    .reviews-nav {
+      display: flex; gap: 12px;
+      margin-top: 48px;
+    }
+    .rev-btn {
+      width: 48px; height: 48px;
+      border: 1px solid var(--black);
+      background: transparent;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.25s, color 0.25s;
+    }
+    .rev-btn:hover { background: var(--black); }
+    .rev-btn:hover svg path { stroke: white; }
+    .rev-btn svg { width: 16px; height: 16px; }
+    .rev-btn svg path { stroke: var(--black); stroke-width: 1.5; fill: none; transition: stroke 0.25s; }
+
+    /* ── BOOKING ── */
+    #booking {
+      padding: 160px 48px;
+      background: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #booking::before {
+      content: 'PRENOTA';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(80px, 18vw, 240px);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: rgba(255,255,255,0.025);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+    .booking-inner { position: relative; z-index: 1; }
+    .booking-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 28px;
+    }
+    .booking-title {
+      font-size: clamp(36px, 6vw, 88px);
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .booking-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.4);
+      font-weight: 300;
+      margin-bottom: 56px;
+    }
+    .booking-actions {
+      display: flex; gap: 16px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .btn-booking {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 18px 44px;
+      transition: all 0.25s var(--ease-out);
+    }
+    .btn-booking-primary {
+      background: var(--white);
+      color: var(--black);
+    }
+    .btn-booking-primary:hover { background: var(--gray-light); transform: translateY(-2px); }
+    .btn-booking-secondary {
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .btn-booking-secondary:hover {
+      color: var(--white);
+      border-color: rgba(255,255,255,0.4);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 80px 48px 48px;
+    }
+    .footer-inner {
+      max-width: 1300px; margin: 0 auto;
+    }
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 80px;
+    }
+    .footer-brand {
+      font-size: 13px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--white);
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+    .footer-tagline {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .footer-col-title {
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.5);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+    }
+    .footer-social {
+      display: flex; gap: 24px;
+    }
+    .footer-social a {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 0.25s;
+    }
+    .footer-social a:hover { color: var(--white); }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s var(--ease-out);
+    }
+    #lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-close {
+      position: absolute; top: 32px; right: 32px;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: rgba(255,255,255,0.6);
+      font-size: 24px;
+      transition: color 0.25s;
+      background: none; border: none;
+    }
+    .lightbox-close:hover { color: var(--white); }
+    .lightbox-content {
+      max-width: 90vw; max-height: 90vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .lightbox-image {
+      display: block;
+      max-width: min(80vw, 1200px);
+      max-height: 75vh;
+      object-fit: contain;
+      margin: 0 auto;
+    }
+    .lightbox-label {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-top: 20px;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .why-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      nav.scrolled { padding: 16px 24px; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+
+      #hero { padding: 0 24px 64px; }
+      .hero-scroll-indicator { right: 24px; bottom: 24px; }
+      .hero-socials { gap: 8px; margin-top: 18px; }
+      .hero-socials-label { width: 100%; margin: 0 0 2px; }
+      .hero-social-link { padding: 8px 11px; font-size: 10px; }
+
+      #intro-strip { padding: 20px 24px; }
+      .strip-text { font-size: 9px; }
+
+      #philosophy { padding: 80px 24px; }
+      .philosophy-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      #services { padding: 80px 24px; }
+      .services-header { margin-bottom: 40px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .service-card { padding: 32px 24px; }
+
+      #portfolio { padding: 80px 24px; }
+      .portfolio-grid { gap: 8px; margin-top: 40px; }
+      .portfolio-label { padding: 30px 12px 12px; font-size: 9px; letter-spacing: 0.12em; }
+      .portfolio-credit { text-align: left; }
+
+      #why-us { padding: 80px 24px; }
+      .why-header { grid-template-columns: 1fr; gap: 28px; }
+      .why-grid { grid-template-columns: 1fr; }
+
+      #reviews { padding: 80px 24px; }
+      .review-card { min-width: 85vw; }
+
+      #booking { padding: 100px 24px; }
+
+      footer { padding: 60px 24px 40px; }
+      .footer-top { grid-template-columns: 1fr; gap: 40px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-wordmark">Royal Barber Studio</div>
+    <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Royal Barber Studio</a>
+  <ul class="nav-links">
+    <li><a href="#services">Servizi</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#why-us">Studio</a></li>
+    <li><a href="#reviews">Recensioni</a></li>
+  </ul>
+ <a href="https://www.fresha.com/it/a/royal-barber-studio-faenza-corso-giuseppe-mazzini-84-o45frtrp/booking?menu=true&share=true&pId=2710490&cartId=f62a6128-5978-4ebb-93a3-139fcf84a8f7" class="nav-cta" target="_blank" rel="noopener">Prenota</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" class="mobile-nav-link">Servizi</a>
+  <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+  <a href="#why-us" class="mobile-nav-link">Studio</a>
+  <a href="#reviews" class="mobile-nav-link">Recensioni</a>
+  <a href="https://www.fresha.com/it/a/royal-barber-studio-faenza-corso-giuseppe-mazzini-84-o45frtrp/booking?menu=true&share=true&pId=2710490&cartId=f62a6128-5978-4ebb-93a3-139fcf84a8f7" class="mobile-nav-link" target="_blank" rel="noopener">Prenota</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="razor-line"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Faenza — Dal 2018</p>
+    <h1 class="hero-title">Royal<br><em>Barber</em><br>Studio</h1>
+    <p class="hero-sub">Tagli moderni, precisione assoluta.</p>
+    <div class="hero-ctas">
+      <a href="https://www.fresha.com/it/a/royal-barber-studio-faenza-corso-giuseppe-mazzini-84-o45frtrp/booking?menu=true&share=true&pId=2710490&cartId=f62a6128-5978-4ebb-93a3-139fcf84a8f7" class="btn-primary" target="_blank" rel="noopener">Prenota Ora</a>
+      <a href="#services" class="btn-secondary">Scopri i Servizi</a>
+    </div>
+    <div class="hero-socials" aria-label="Seguici e contattaci">
+      <span class="hero-socials-label">Seguici</span>
+      <a class="hero-social-link" href="https://www.instagram.com/royal_barberstudio_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Royal Barber Studio">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="6.8" r="1" fill="currentColor"/></svg>
+        Instagram
+      </a>
+      <a class="hero-social-link" href="https://www.tiktok.com/@royal.barber.stud" target="_blank" rel="noopener noreferrer" aria-label="TikTok Royal Barber Studio">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3v11.1a4.1 4.1 0 1 1-3.2-4V13a1.8 1.8 0 1 0 1.2 1.7V3h2c.3 2.2 1.6 3.8 4 4.3v2.1A8 8 0 0 1 14 7.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        TikTok
+      </a>
+      <a class="hero-social-link" href="https://wa.me/393391234567" target="_blank" rel="noopener noreferrer" aria-label="Contattaci su WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.7a8 8 0 0 1-11.8 7L4 20l1.3-4.1A8 8 0 1 1 20 11.7Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 8.5c.2-.4.4-.4.7-.4h.4c.2 0 .3.1.4.4l.7 1.5c.1.2 0 .4-.1.5l-.5.6c-.2.2-.2.3 0 .5.4.7 1 1.3 1.7 1.7.2.1.4.1.5-.1l.6-.7c.2-.2.3-.2.5-.1l1.5.7c.2.1.3.2.3.4 0 .3-.2.8-.5 1.1-.3.3-.8.5-1.2.5s-1.1-.2-2.1-.7c-1.2-.6-2.2-1.6-2.8-2.6-.6-.9-.8-1.6-.8-2.1s.3-1 .7-1.3Z" fill="currentColor"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div id="intro-strip">
+  <span class="strip-text">Taglio Uomo</span>
+  <div class="strip-divider"></div>
+  <span class="strip-text">Fade</span>
+  <div class="strip-divider"></div>
+  <span class="strip-text">Barba</span>
+  <div class="strip-divider"></div>
+  <span class="strip-text">Rasatura Tradizionale</span>
+  <div class="strip-divider"></div>
+  <span class="strip-text">Taglio + Barba</span>
+  <div class="strip-divider"></div>
+  <span class="strip-text">Faenza RA</span>
+</div>
+
+<!-- PHILOSOPHY -->
+<section id="philosophy">
+  <div class="philosophy-inner">
+    <div class="philosophy-left reveal">
+      <div class="section-label">La nostra filosofia</div>
+      <h2 class="philosophy-heading">L'arte del<br><strong>taglio perfetto</strong></h2>
+    </div>
+    <div class="philosophy-right reveal reveal-delay-2">
+      <p class="philosophy-body">
+        Non siamo un barbiere qualsiasi. Royal Barber Studio nasce dalla convinzione che ogni taglio sia un atto di cura, precisione e identità. Ogni cliente merita attenzione totale, tecnica impeccabile e un ambiente in cui sentirsi a proprio agio.
+      </p>
+      <div class="philosophy-stat">
+        <span class="stat-number">2000+</span>
+        <span class="stat-label">Clienti soddisfatti</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div class="reveal">
+        <div class="section-label">I nostri servizi</div>
+        <h2 class="services-title">Quello che<br>facciamo,<br>lo facciamo bene</h2>
+      </div>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-icon">✦</span>
+        <h3 class="service-name">Taglio Uomo</h3>
+        <p class="service-desc">Taglio classico o moderno su misura del tuo stile, con consulenza personalizzata e finitura impeccabile.</p>
+        <div>
+          <span class="service-price">da €22</span>
+          <span class="service-duration">· 30 min</span>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">◈</span>
+        <h3 class="service-name">Fade</h3>
+        <p class="service-desc">Sfumatura graduale eseguita con tecnica precisa. High fade, mid fade o low fade: massima cura nei dettagli.</p>
+        <div>
+          <span class="service-price">da €25</span>
+          <span class="service-duration">· 35 min</span>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">◉</span>
+        <h3 class="service-name">Barba</h3>
+        <p class="service-desc">Modellatura e rifinitura della barba con strumenti professionali. Dal corto regolato al look da lumberjack.</p>
+        <div>
+          <span class="service-price">da €18</span>
+          <span class="service-duration">· 25 min</span>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">⟡</span>
+        <h3 class="service-name">Rasatura Tradizionale</h3>
+        <p class="service-desc">Rasatura con rasoio a mano libera, hot towel e prodotti premium. Un rituale di cura autentico.</p>
+        <div>
+          <span class="service-price">da €28</span>
+          <span class="service-duration">· 40 min</span>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-4">
+        <span class="service-icon">❋</span>
+        <h3 class="service-name">Taglio + Barba</h3>
+        <p class="service-desc">Il pacchetto completo. Taglio personalizzato e cura della barba in un'unica sessione premium.</p>
+        <div>
+          <span class="service-price">da €35</span>
+          <span class="service-duration">· 55 min</span>
+        </div>
+      </div>
+      <div class="service-card reveal reveal-delay-5">
+        <span class="service-icon">◌</span>
+        <h3 class="service-name">Trattamento Cuoio Capelluto</h3>
+        <p class="service-desc">Maschera nutriente e massaggio rilassante. Cura profonda per capelli forti e sani.</p>
+        <div>
+          <span class="service-price">da €20</span>
+          <span class="service-duration">· 30 min</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-inner">
+    <div class="reveal">
+      <div class="section-label">Portfolio</div>
+      <h2 class="services-title">Il nostro<br>lavoro parla<br>da solo</h2>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item reveal" data-label="Sfumatura texturizzata" role="button" tabindex="0">
+        <div class="portfolio-img-wrap">
+          <div class="portfolio-image">
+            <img src="images/portfolio-fade.jpg" alt="Giovane cliente con capelli mossi e sfumatura laterale" loading="lazy">
+            <div class="portfolio-label">Sfumatura texturizzata</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-1" data-label="Riccio con sfumatura" role="button" tabindex="0">
+        <div class="portfolio-img-wrap">
+          <div class="portfolio-image">
+            <img src="images/portfolio-cut.jpg" alt="Giovane cliente con capelli ricci e sfumatura laterale" loading="lazy">
+            <div class="portfolio-label">Riccio con sfumatura</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-2" data-label="Taglio corto texturizzato" role="button" tabindex="0">
+        <div class="portfolio-img-wrap">
+          <div class="portfolio-image">
+            <img src="images/portfolio-texture.jpg" alt="Giovane cliente con un taglio corto e texturizzato" loading="lazy">
+            <div class="portfolio-label">Taglio corto texturizzato</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item reveal reveal-delay-3" data-label="Fade pulito" role="button" tabindex="0">
+        <div class="portfolio-img-wrap">
+          <div class="portfolio-image">
+            <img src="images/portfolio-style.jpg" alt="Giovane cliente con sfumatura sfumata su capelli scuri" loading="lazy">
+            <div class="portfolio-label">Fade pulito</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="portfolio-credit">Tagli realizzati da Royal Barber Studio. <a href="https://www.instagram.com/royal_barberstudio_/" target="_blank" rel="noopener noreferrer">Scopri altri tagli su Instagram</a>.</p>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Anteprima portfolio">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Chiudi">✕</button>
+  <div class="lightbox-content" id="lightbox-content">
+    <img class="lightbox-image" id="lightbox-image" alt="">
+    <div class="lightbox-label" id="lightbox-label"></div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section id="why-us">
+  <div class="why-inner">
+    <div class="why-header">
+      <div class="reveal">
+        <div class="section-label" style="color: rgba(255,255,255,0.25);">Perché sceglierci</div>
+        <h2 class="why-title">Ogni dettaglio,<br>al suo posto</h2>
+      </div>
+      <p class="why-intro reveal reveal-delay-2">
+        Royal Barber Studio non è solo un posto dove tagliarsi i capelli. È uno spazio progettato per offrire un'esperienza curata in ogni aspetto, dalla prima stretta di mano all'ultimo colpo di pennello.
+      </p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-num">01</div>
+        <h3 class="why-card-title">Esperienza</h3>
+        <p class="why-card-body">Anni di formazione e passione messi al servizio di ogni cliente. Conosciamo le tendenze, rispettiamo la tradizione.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-1">
+        <div class="why-num">02</div>
+        <h3 class="why-card-title">Precisione</h3>
+        <p class="why-card-body">Ogni linea, ogni sfumatura, ogni contorno è eseguito con meticolosità. Non lasciamo nulla al caso.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-2">
+        <div class="why-num">03</div>
+        <h3 class="why-card-title">Ambiente</h3>
+        <p class="why-card-body">Uno spazio moderno, curato, pensato per farti sentire a tuo agio. Non solo un barbiere: un rituale.</p>
+      </div>
+      <div class="why-card reveal reveal-delay-3">
+        <div class="why-num">04</div>
+        <h3 class="why-card-title">Prodotti Premium</h3>
+        <p class="why-card-body">Utilizziamo solo prodotti professionali selezionati, per garantire il miglior risultato sulla tua cute e i tuoi capelli.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-inner">
+    <div class="reveal">
+      <div class="section-label">Recensioni</div>
+      <h2 class="services-title">Quello che<br>dicono di noi</h2>
+    </div>
+    <div class="reviews-carousel-wrap reveal">
+      <div class="reviews-track" id="reviews-track">
+        <div class="review-card">
+          <div class="review-stars">
+            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          </div>
+          <p class="review-text">"Finalmente un barbiere che capisce davvero cosa vuoi. Il risultato è sempre perfetto, l'ambiente è curatissimo. Non tornerei mai indietro."</p>
+          <div class="review-author">Marco T.</div>
+          <div class="review-meta">Cliente dal 2021</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          </div>
+          <p class="review-text">"Il fade è impeccabile ogni volta. Precisione millimetrica e un'attenzione ai dettagli che non ho trovato altrove. Cinque stelle meritatissime."</p>
+          <div class="review-author">Luca R.</div>
+          <div class="review-meta">Cliente dal 2020</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          </div>
+          <p class="review-text">"La rasatura tradizionale è un'esperienza in sé. Hot towel, rasoio e prodotti di qualità: mi sono sentito coccolato dall'inizio alla fine."</p>
+          <div class="review-author">Stefano M.</div>
+          <div class="review-meta">Cliente dal 2022</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          </div>
+          <p class="review-text">"Sono venuto la prima volta per curiosità, ora vengo ogni tre settimane. L'atmosfera è unica, il barbiere ascolta e consiglia senza imporre."</p>
+          <div class="review-author">Andrea C.</div>
+          <div class="review-meta">Cliente dal 2019</div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">
+            <div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div>
+          </div>
+          <p class="review-text">"Prenotare è semplicissimo, la puntualità è perfetta e il risultato supera sempre le aspettative. Il miglior barbiere di Faenza senza dubbio."</p>
+          <div class="review-author">Davide F.</div>
+          <div class="review-meta">Cliente dal 2021</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-nav">
+      <button class="rev-btn" id="rev-prev" aria-label="Precedente">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="rev-btn" id="rev-next" aria-label="Successiva">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-inner">
+    <p class="booking-eyebrow reveal">Faenza — Prenota ora</p>
+    <h2 class="booking-title reveal reveal-delay-1">Pronto per<br>il tuo<br>taglio perfetto?</h2>
+    <p class="booking-sub reveal reveal-delay-2">Prenota in pochi secondi. Nessuna attesa, nessuna sorpresa.</p>
+    <div class="booking-actions reveal reveal-delay-3">
+      <a href="https://www.fresha.com/it/a/royal-barber-studio-faenza-corso-giuseppe-mazzini-84-o45frtrp/booking?menu=true&share=true&pId=2710490&cartId=f62a6128-5978-4ebb-93a3-139fcf84a8f7" class="btn-booking btn-booking-primary" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Prenota via WhatsApp
+      </a>
+      <a href="tel:+393391234567" class="btn-booking btn-booking-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.89 9.11a19.79 19.79 0 01-3.07-8.67A2 2 0 012.81 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Chiama Ora
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Royal Barber Studio</div>
+        <p class="footer-tagline">Tagli moderni, precisione assoluta.<br>Dal 2018, nel cuore di Faenza.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigazione</div>
+        <ul class="footer-links">
+          <li><a href="#services">Servizi</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#why-us">Studio</a></li>
+          <li><a href="#reviews">Recensioni</a></li>
+          <li><a href="https://www.fresha.com/it/a/royal-barber-studio-faenza-corso-giuseppe-mazzini-84-o45frtrp/booking?menu=true&share=true&pId=2710490&cartId=f62a6128-5978-4ebb-93a3-139fcf84a8f7" target="_blank" rel="noopener">Prenota</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contatti</div>
+        <div class="footer-text">
+          Via Torricelli, 12<br>
+          48018 Faenza (RA)<br><br>
+          <a href="tel:+393391234567" style="color:inherit;text-decoration:none;">+39 339 123 4567</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Orari</div>
+        <div class="footer-text">
+          Lunedì: Chiuso<br>
+          Mar – Ven: 9:00 – 19:30<br>
+          Sabato: 9:00 – 18:00<br>
+          Domenica: Chiuso
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Royal Barber Studio — Faenza. Tutti i diritti riservati.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/royal_barberstudio_/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.tiktok.com/@royal.barber.stud" target="_blank" rel="noopener noreferrer">TikTok</a>
+        <a href="https://wa.me/393391234567" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── LOADER ──
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 1600);
+  });
+
+  // ── NAV SCROLL ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ── HAMBURGER ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // ── SCROLL REVEAL ──
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ── PARALLAX HERO ──
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg && scrollY < window.innerHeight) {
+      heroBg.style.transform = `translateY(${scrollY * 0.35}px)`;
+    }
+  }, { passive: true });
+
+  // ── CAROUSEL ──
+  const track = document.getElementById('reviews-track');
+  const cards = track.querySelectorAll('.review-card');
+  let current = 0;
+  let autoplay;
+
+  function getVisible() {
+    if (window.innerWidth < 768) return 1;
+    if (window.innerWidth < 1024) return 2;
+    return 3;
+  }
+
+  function slideCarousel(dir) {
+    const vis = getVisible();
+    const max = cards.length - vis;
+    current = Math.max(0, Math.min(current + dir, max));
+    const cardWidth = cards[0].offsetWidth + 24;
+    track.style.transform = `translateX(-${current * cardWidth}px)`;
+  }
+
+  document.getElementById('rev-next').addEventListener('click', () => {
+    const vis = getVisible();
+    if (current >= cards.length - vis) current = -1;
+    slideCarousel(1);
+    resetAutoplay();
+  });
+  document.getElementById('rev-prev').addEventListener('click', () => {
+    if (current <= 0) current = cards.length - getVisible() + 1;
+    slideCarousel(-1);
+    resetAutoplay();
+  });
+
+  function startAutoplay() {
+    autoplay = setInterval(() => {
+      const vis = getVisible();
+      if (current >= cards.length - vis) { current = -1; }
+      slideCarousel(1);
+    }, 4000);
+  }
+  function resetAutoplay() { clearInterval(autoplay); startAutoplay(); }
+  startAutoplay();
+
+  // ── PORTFOLIO LIGHTBOX ──
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image');
+  const lightboxLabel = document.getElementById('lightbox-label');
+
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    const open = () => {
+      const label = item.getAttribute('data-label') || '';
+      const image = item.querySelector('.portfolio-image img');
+      if (!image) return;
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightboxLabel.textContent = label;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    item.addEventListener('click', open);
+    item.addEventListener('keydown', e => { if (e.key === 'Enter') open(); });
+  });
+
+  document.getElementById('lightbox-close').addEventListener('click', () => {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ── SMOOTH SCROLL OFFSET FOR FIXED NAV ──
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const target = document.querySelector(anchor.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = nav.offsetHeight + 20;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
